@@ -24,6 +24,7 @@ group :development do
   gem "rails-erd"
   gem "spring"
   gem "spring-commands-rspec"
+  gem "rb-readline"
 end
 
 group :development, :test do

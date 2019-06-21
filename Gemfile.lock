@@ -203,6 +203,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rb-readline (0.5.5)
     request_store (1.4.1)
       rack (>= 1.4)
     responders (2.4.0)
@@ -308,6 +309,7 @@ DEPENDENCIES
   pry-rails
   rails (= 5.2)
   rails-erd
+  rb-readline
   rspec-rails
   rubocop
   sass-rails
