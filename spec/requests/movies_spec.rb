@@ -71,4 +71,21 @@ describe "Movies requests", type: :request do
       }.to have_enqueued_job(ActionMailer::DeliveryJob)
     end
   end
+
+  describe "GET /export" do
+    let!(:user)   { create(:user) }
+    let!(:django) { create(:movie, title: "Django") }
+
+    before do
+      stub_pairguru_get(/Django/, "django.json")
+      login_as(user)
+    end
+
+    it "enqueues export job" do
+      expect {
+        get "/movies/export"
+        expect(ActionMailer::Base.deliveries.count).to eq(0)
+      }.to have_enqueued_job(ExportMoviesJob).with(user.id, "tmp/movies.csv")
+    end
+  end
 end
