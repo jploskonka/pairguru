@@ -17,6 +17,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 
 gem "httparty"
 gem "fast_jsonapi"
+gem "sucker_punch"
 
 group :development do
   gem "better_errors"

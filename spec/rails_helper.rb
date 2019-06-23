@@ -34,6 +34,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
   config.include Capybara::DSL
+  config.include Warden::Test::Helpers
   config.include PairguruApi::TestHelpers
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -62,3 +63,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+ActiveJob::Base.queue_adapter = :test

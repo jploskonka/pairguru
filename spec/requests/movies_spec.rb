@@ -54,4 +54,21 @@ describe "Movies requests", type: :request do
       movie_title: "Django",
       fixture_file_name: "django.json"
   end
+
+  describe "GET /:id/send_info" do
+    let!(:user)   { create(:user) }
+    let!(:django) { create(:movie, title: "Django") }
+
+    before do
+      stub_pairguru_get(/Django/, "django.json")
+      login_as(user)
+    end
+
+    it "sends email via background job" do
+      expect {
+        get "/movies/#{django.id}/send_info"
+        expect(ActionMailer::Base.deliveries.count).to eq(0)
+      }.to have_enqueued_job(ActionMailer::DeliveryJob)
+    end
+  end
 end
