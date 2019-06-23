@@ -16,6 +16,7 @@ gem "uglifier"
 gem "bootsnap", ">= 1.1.0", require: false
 
 gem "httparty"
+gem "fast_jsonapi"
 
 group :development do
   gem "better_errors"
