@@ -1,5 +1,5 @@
 module Api
-  module V1
+  module V2
     class MoviesController < ApiController
       def index
         @movies = Movie.all
@@ -14,7 +14,7 @@ module Api
       private
 
       def render_movies
-        render json: MovieSerializer.new(@movies)
+        render json: MovieSerializer.new(@movies, include: [:genre])
       end
     end
   end
