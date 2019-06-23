@@ -5,6 +5,7 @@ describe "Genres requests", type: :request do
 
   describe "genre list" do
     it "displays only related movies" do
+      stub_pairguru_get(/movies/, "django.json")
       visit "/genres/" + genres.sample.id.to_s + "/movies"
       expect(page).to have_selector("table tr", count: 5)
     end

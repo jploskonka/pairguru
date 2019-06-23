@@ -15,6 +15,8 @@ gem "uglifier"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
+gem "httparty"
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

@@ -4,12 +4,12 @@
       %tr
         %td= i + 1
         %td
-          %img.img-rounded{ src: movie.cover }
+          %img.movies-table__poster.img-rounded{ src: movie.cover }
         %td
           %h4
-            = link_to movie.title, movie_path(movie)
+            = link_to movie.headline, movie_path(movie)
           %p
             %strong
               = link_to movie.genre.name, movies_genre_path(movie.genre)
             = ' (' + movie.released_at.to_s + ')'
-          %p= movie.description
+          %p= movie.plot

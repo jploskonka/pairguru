@@ -1,2 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.movies-table__poster {
+  max-width: 150px;
+}
+
+.movie__poster {
+  max-width: 100%;
+}
