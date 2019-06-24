@@ -26,4 +26,13 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
 
   has_many :comments
+
+  def self.top_commenters(limit = 10)
+    joins(:comments)
+      .where('comments.created_at >= ?', 1.week.ago)
+      .group('comments.user_id')
+      .select('users.*, count(*) as comments_count')
+      .order('comments_count DESC')
+      .limit(limit)
+  end
 end

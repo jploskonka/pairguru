@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
+  get '/top_commenters', to: 'users#top_commenters', as: :top_commenters
+
+
   namespace :api do
     namespace :v1 do
       resources :movies, only: [:index, :show]
